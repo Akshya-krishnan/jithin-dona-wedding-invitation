@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Jithin & Dona | Wedding Invitation</title>
+  <meta name="description" content="Wedding invitation of Jithin & Dona. 11 January 2027.">
+  <meta name="theme-color" content="#fdf0e4">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jithin & Dona | Wedding Invitation">
+  <meta property="og:description" content="Celebrate the wedding of Jithin & Dona on 11 January 2027.">
+  <meta property="og:image" content="/assets/images/intro-watercolor-church.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts: calligraphy, romantic serif, verse serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:wght@400;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       THE INVITATION PAGES
+       1. Watercolor painting of the couple walking to the church (tap to continue)
+       2. Verse page: cross, Matthew 19:6, living foliage, vinyl record that plays the song
+       3. Engagement ceremony invitation (after "Continue")
+       4. Wedding invitation slides: groom → bride → couple with greetings, date & venue
+       ======================================================================== -->
+  <div id="page-stack" class="page-stack" role="main" aria-label="Wedding Invitation of Jithin and Dona">
+
+    <!-- Watercolor Intro Stage: the painting of Jithin & Dona walking to the church is washed onto the paper as the link opens -->
+    <div class="watercolor-intro-stage" id="watercolor-intro-stage" aria-label="Watercolor painting of Jithin and Dona walking hand in hand towards the church">
+      <div class="wc-backdrop" aria-hidden="true"></div>
+
+      <div class="wc-art-wrap">
+        <img
+          src="/assets/images/intro-watercolor-church.jpg"
+          alt="Watercolor painting of Jithin and Dona walking hand in hand towards the church"
+          class="wc-art-img"
+          id="wc-art-img"
+          decoding="async"
+          fetchpriority="high"
+          onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='./assets/images/intro-watercolor-church.jpg';}"
+        >
+        <div class="wc-wash-veil" aria-hidden="true"></div>
+        <div class="wc-vignette" aria-hidden="true"></div>
+      </div>
+
+      <div class="wc-intro-text">
+        <span class="wc-cross">✠</span>
+        <p class="wc-pretitle">The Holy Matrimony of</p>
+        <h1 class="wc-names">
+          <span class="wc-name">Jithin</span>
+          <span class="wc-amp">&amp;</span>
+          <span class="wc-name">Dona</span>
+        </h1>
+        <p class="wc-date">11 · January · 2027</p>
+      </div>
+
+      <button type="button" class="wc-tap-prompt" id="wc-tap-prompt">✦ Tap to open the invitation ✦</button>
+    </div>
+
+    <!-- Verse Page: cross, Matthew 19:6 and living foliage, revealed after the painting is tapped -->
+    <div class="verse-intro-stage stage-hidden" id="verse-intro-stage" aria-label="So they are no longer two, but one. Therefore what God has joined together, let man not separate. Matthew 19:6">
+      <div class="verse-drift-leaves" aria-hidden="true">
+        <span class="drift-leaf"></span>
+        <span class="drift-leaf"></span>
+        <span class="drift-leaf"></span>
+        <span class="drift-leaf"></span>
+        <span class="drift-leaf"></span>
+        <span class="drift-leaf"></span>
+        <span class="drift-leaf"></span>
+        <span class="drift-leaf"></span>
+      </div>
+
+      <div class="verse-page-frame">
+        <img class="verse-leaves verse-leaves-tl" src="/assets/images/verse/leaves-top-left.png" alt="" aria-hidden="true" decoding="async">
+        <img class="verse-leaves verse-leaves-tr" src="/assets/images/verse/leaves-top-right.png" alt="" aria-hidden="true" decoding="async">
+
+        <div class="verse-content">
+          <div class="verse-cross-wrap">
+            <img class="verse-cross" src="/assets/images/verse/cross.png" alt="Wooden cross adorned with white flowers" decoding="async">
+          </div>
+          <blockquote class="verse-quote">
+            <p class="verse-line">“So they are no longer two, but one.</p>
+            <p class="verse-line">Therefore what God has joined together,</p>
+            <p class="verse-line">let man not separate.”</p>
+            <cite class="verse-ref">- Matthew 19.6</cite>
+          </blockquote>
+
+        </div>
+
+        <div class="verse-foliage-wrap" aria-hidden="true">
+          <img class="verse-foliage verse-foliage-left" src="/assets/images/verse/foliage-bottom-left.png" alt="" decoding="async">
+          <img class="verse-foliage verse-foliage-right" src="/assets/images/verse/foliage-bottom-right.png" alt="" decoding="async">
+        </div>
+      </div>
+
+      <button type="button" class="wc-tap-prompt verse-continue-btn" id="verse-continue-btn">✦ View Engagement Invitation ✦</button>
+    </div>
+
+    <!-- Engagement ceremony invitation: shown after "Continue" -->
+    <section class="engagement-stage stage-hidden" id="engagement-stage" aria-label="Engagement ceremony invitation of Jithin Shaji and Dona Sabu">
+      <div class="eng-backdrop" aria-hidden="true"></div>
+
+      <div class="eng-frame">
+        <div class="eng-scene">
+          <img class="eng-art" src="/assets/images/engagement-invite.jpg" alt="Engagement invitation artwork: golden rings above, the couple walking hand in hand below, framed by white flowers" decoding="async">
+          <div class="eng-text-cover" aria-hidden="true"></div>
+          <div class="eng-fx" aria-hidden="true">
+            <span class="eng-sparkle" style="left:22%;top:12%">✦</span>
+            <span class="eng-sparkle" style="left:72%;top:9%">✦</span>
+            <span class="eng-sparkle" style="left:64%;top:19%">✧</span>
+            <span class="eng-sparkle" style="left:30%;top:21%">✧</span>
+            <span class="eng-sparkle" style="left:82%;top:40%">✦</span>
+            <span class="eng-sparkle" style="left:14%;top:48%">✧</span>
+            <span class="eng-petal" style="left:8%"></span>
+            <span class="eng-petal" style="left:26%"></span>
+            <span class="eng-petal" style="left:44%"></span>
+            <span class="eng-petal" style="left:61%"></span>
+            <span class="eng-petal" style="left:78%"></span>
+            <span class="eng-petal" style="left:92%"></span>
+            <span class="eng-ring-glint"></span>
+          </div>
+
+          <div class="eng-text">
+            <p class="eng-pretitle">Engagement Ceremony of</p>
+            <h2 class="eng-name">Jithin Shaji</h2>
+            <p class="eng-and">and</p>
+            <h2 class="eng-name">Dona Sabu</h2>
+            <div class="eng-divider" aria-hidden="true">
+              <svg viewBox="0 0 120 14" preserveAspectRatio="xMidYMid meet">
+                <path d="M4 7 H44 M76 7 H116" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M48 7 c4 -6 8 -6 12 0 c4 6 8 6 12 0" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <circle cx="60" cy="7" r="1.8" fill="currentColor"/>
+              </svg>
+            </div>
+            <p class="eng-datetime">Date: 07 January 2027 <span class="eng-sep">|</span> Time: 05:30 PM onwards</p>
+            <p class="eng-venue"><span class="eng-venue-label">Venue:</span><br>St. Stephen’s Knanaya Catholic Church<br>Uzhavoor, Kottayam</p>
+            <p class="eng-reception">Reception will follow at St. Stephen’s Parish Hall.</p>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="wc-tap-prompt eng-next-btn" id="engagement-continue-btn">✦ Do you know who we are? ✦</button>
+    </section>
+
+    <!-- Wedding invitation: three slides (groom, bride, the couple with greetings, date & venue) -->
+    <section class="wedding-stage stage-hidden" id="wedding-stage" aria-label="Wedding invitation of Jithin Shaji and Dona Sabu">
+      <div class="verse-page-frame wd-deco" aria-hidden="true">
+        <img class="verse-leaves verse-leaves-tl" src="/assets/images/verse/leaves-top-left.png" alt="" decoding="async">
+        <img class="verse-leaves verse-leaves-tr" src="/assets/images/verse/leaves-top-right.png" alt="" decoding="async">
+      </div>
+
+      <!-- Living background: drifting watercolor washes, paper grain, golden bokeh, leaves and foliage -->
+      <div class="wd-bg" aria-hidden="true">
+        <div class="wd-bg-wash wd-bg-wash-1"></div>
+        <div class="wd-bg-wash wd-bg-wash-2"></div>
+        <div class="wd-bg-wash wd-bg-wash-3"></div>
+        <div class="wd-bg-grain"></div>
+        <div class="wd-bokeh">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="verse-drift-leaves">
+          <span class="drift-leaf"></span><span class="drift-leaf"></span><span class="drift-leaf"></span><span class="drift-leaf"></span>
+          <span class="drift-leaf"></span><span class="drift-leaf"></span><span class="drift-leaf"></span><span class="drift-leaf"></span>
+        </div>
+        <div class="wd-foliage-wrap">
+          <img class="wd-foliage wd-foliage-left" src="/assets/images/verse/foliage-bottom-left.png" alt="" decoding="async">
+          <img class="wd-foliage wd-foliage-right" src="/assets/images/verse/foliage-bottom-right.png" alt="" decoding="async">
+        </div>
+      </div>
+
+      <div class="wd-slides" id="wedding-slides">
+
+        <!-- Slide 1: the groom -->
+        <article class="wd-slide" data-slide="groom" aria-label="The groom">
+          <div class="wd-slide-inner">
+            <p class="wd-label">The Groom</p>
+            <div class="wd-portrait">
+
+              <div class="wd-halo" aria-hidden="true"></div>
+              <div class="wd-ring-wrap" aria-hidden="true">
+                <svg class="wd-ring" viewBox="0 0 200 200">
+                  <circle cx="100" cy="100" r="96" fill="none" stroke="#cfa344" stroke-width="0.8" stroke-dasharray="2 6" stroke-linecap="round"/>
+                  <circle cx="100" cy="100" r="88" fill="none" stroke="#cfa344" stroke-width="0.5" stroke-dasharray="14 10"/>
+                  <g fill="#cfa344">
+                    <circle cx="100" cy="4" r="2"/><circle cx="196" cy="100" r="2"/><circle cx="100" cy="196" r="2"/><circle cx="4" cy="100" r="2"/>
+                    <circle cx="168" cy="32" r="1.4"/><circle cx="168" cy="168" r="1.4"/><circle cx="32" cy="168" r="1.4"/><circle cx="32" cy="32" r="1.4"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="wd-sparkle wd-sparkle-1" aria-hidden="true">✦</span>
+              <span class="wd-sparkle wd-sparkle-2" aria-hidden="true">✦</span>
+              <span class="wd-sparkle wd-sparkle-3" aria-hidden="true">✦</span>
+              <span class="wd-sparkle wd-sparkle-4" aria-hidden="true">✧</span>
+              <span class="wd-sparkle wd-sparkle-5" aria-hidden="true">✧</span>
+              <div class="wd-arch" aria-hidden="true"></div>
+              <div class="wd-photo-frame">
+                <img class="wd-photo wd-photo-groom" src="/assets/images/people/groom.jpg" alt="Jithin Shaji" decoding="async">
+              </div>
+            </div>
+            <h2 class="wd-name">Jithin Shaji</h2>
+            <p class="wd-detail">S/o Shaji Thomas &amp; Jiji Shaji</p>
+            <p class="wd-detail wd-detail-sub">Kattuveettil H, S.H. Mount P.O., Kottayam</p>
+          </div>
+        </article>
+
+        <!-- Slide 2: the bride -->
+        <article class="wd-slide" data-slide="bride" aria-label="The bride">
+          <div class="wd-slide-inner">
+            <p class="wd-label">The Bride</p>
+            <div class="wd-portrait">
+
+              <div class="wd-halo" aria-hidden="true"></div>
+              <div class="wd-ring-wrap" aria-hidden="true">
+                <svg class="wd-ring" viewBox="0 0 200 200">
+                  <circle cx="100" cy="100" r="96" fill="none" stroke="#cfa344" stroke-width="0.8" stroke-dasharray="2 6" stroke-linecap="round"/>
+                  <circle cx="100" cy="100" r="88" fill="none" stroke="#cfa344" stroke-width="0.5" stroke-dasharray="14 10"/>
+                  <g fill="#cfa344">
+                    <circle cx="100" cy="4" r="2"/><circle cx="196" cy="100" r="2"/><circle cx="100" cy="196" r="2"/><circle cx="4" cy="100" r="2"/>
+                    <circle cx="168" cy="32" r="1.4"/><circle cx="168" cy="168" r="1.4"/><circle cx="32" cy="168" r="1.4"/><circle cx="32" cy="32" r="1.4"/>
+                  </g>
+                </svg>
+              </div>
+              <span class="wd-sparkle wd-sparkle-1" aria-hidden="true">✦</span>
+              <span class="wd-sparkle wd-sparkle-2" aria-hidden="true">✦</span>
+              <span class="wd-sparkle wd-sparkle-3" aria-hidden="true">✦</span>
+              <span class="wd-sparkle wd-sparkle-4" aria-hidden="true">✧</span>
+              <span class="wd-sparkle wd-sparkle-5" aria-hidden="true">✧</span>
+              <div class="wd-arch" aria-hidden="true"></div>
+              <div class="wd-photo-frame">
+                <img class="wd-photo wd-photo-bride" src="/assets/images/people/bride.jpg" alt="Dona Sabu" decoding="async">
+              </div>
+            </div>
+            <h2 class="wd-name">Dona Sabu</h2>
+            <p class="wd-detail">D/o Sabu Thomas &amp; Lizi Sabu</p>
+            <p class="wd-detail wd-detail-sub">Thazhathukandathil H, Uzhavoor</p>
+          </div>
+        </article>
+
+        <!-- Slide 3: the couple, greetings, date & venue -->
+        <article class="wd-slide wd-slide-couple" data-slide="couple" aria-label="Wedding greetings, date and venue">
+          <div class="wd-slide-inner wd-couple-card env-scene" id="env-scene">
+            <!-- inside: the pampas card (the user's artwork) with their names, revealed when the flaps open -->
+            <div class="inv-card inside" id="inv-card">
+              <div class="inside-art" aria-hidden="true"></div>
+              <div class="inside-light" aria-hidden="true"></div>
+              <div class="inside-shade" aria-hidden="true"></div>
+              <div class="inside-text">
+                <p class="inside-kicker">We're getting<br>married</p>
+                <h2 class="inside-name">Jithin</h2>
+                <p class="inside-and">and</p>
+                <h2 class="inside-name">Dona</h2>
+              </div>
+              <div class="inside-details">
+                <p class="inside-line">Monday, 11 January 2027 · 4:00 PM</p>
+                <p class="inside-line inside-venue">Sacred Heart Mount Monastery Church<br>S.H. Mount, Kottayam</p>
+                <p class="inside-line inside-reception">Reception to follow at Aithousa Convention Centre</p>
+              </div>
+              <div class="inv-bfs" id="inv-bfs" aria-hidden="true">
+              <div class="inv-bf inv-bf-1" aria-hidden="true">
+                <div class="bf-half bf-half-l"><svg class="bfw bfw-l" viewBox="0 0 110 130" aria-hidden="true">
+  <defs>
+    <linearGradient id="invbf1l-fw" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffdf8"/><stop offset="0.55" stop-color="#f3ecdd"/><stop offset="1" stop-color="#b9c7ad"/></linearGradient>
+    <linearGradient id="invbf1l-hw" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset="0.6" stop-color="#efe6d4"/><stop offset="1" stop-color="#a9bb9e"/></linearGradient>
+  </defs>
+  <g transform="">
+    <path d="M108 70 C 92 66, 70 70, 56 86 C 44 100, 44 118, 58 126 C 68 131, 80 126, 86 120 C 90 124, 98 124, 102 118 C 110 108, 112 88, 108 70 Z" fill="url(#invbf1l-hw)" stroke="#6f8a68" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M106 76 C 92 80, 78 92, 70 112 M100 72 C 84 74, 70 82, 60 98" fill="none" stroke="#6f8a68" stroke-width="0.7" opacity="0.5"/>
+    <path d="M108 66 C 96 40, 70 14, 40 6 C 22 1, 6 8, 4 22 C 2 36, 12 46, 26 54 C 18 58, 12 66, 14 74 C 18 84, 36 86, 58 80 C 78 76, 96 72, 108 66 Z" fill="url(#invbf1l-fw)" stroke="#6f8a68" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M106 64 C 84 52, 60 30, 40 14 M106 66 C 82 58, 56 46, 30 40 M104 68 C 80 66, 56 66, 24 68" fill="none" stroke="#6f8a68" stroke-width="0.7" opacity="0.5"/>
+    <path d="M40 6 C 22 1, 6 8, 4 22 C 2 36, 12 46, 26 54 C 20 50, 14 42, 14 30 C 15 20, 24 12, 40 10 Z" fill="#4f7452" opacity="0.5"/>
+    <circle cx="20" cy="26" r="2.2" fill="#fffaf0"/><circle cx="28" cy="16" r="1.6" fill="#fffaf0"/>
+    <circle cx="48" cy="42" r="5.5" fill="#dfd6b8" stroke="#6f8a68" stroke-width="1"/><circle cx="48" cy="42" r="2" fill="#4f7452"/>
+  </g>
+</svg></div>
+                <div class="bf-half bf-half-r"><svg class="bfw bfw-r" viewBox="0 0 110 130" aria-hidden="true">
+  <defs>
+    <linearGradient id="invbf1r-fw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffdf8"/><stop offset="0.55" stop-color="#f3ecdd"/><stop offset="1" stop-color="#b9c7ad"/></linearGradient>
+    <linearGradient id="invbf1r-hw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset="0.6" stop-color="#efe6d4"/><stop offset="1" stop-color="#a9bb9e"/></linearGradient>
+  </defs>
+  <g transform="translate(110 0) scale(-1 1)">
+    <path d="M108 70 C 92 66, 70 70, 56 86 C 44 100, 44 118, 58 126 C 68 131, 80 126, 86 120 C 90 124, 98 124, 102 118 C 110 108, 112 88, 108 70 Z" fill="url(#invbf1r-hw)" stroke="#6f8a68" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M106 76 C 92 80, 78 92, 70 112 M100 72 C 84 74, 70 82, 60 98" fill="none" stroke="#6f8a68" stroke-width="0.7" opacity="0.5"/>
+    <path d="M108 66 C 96 40, 70 14, 40 6 C 22 1, 6 8, 4 22 C 2 36, 12 46, 26 54 C 18 58, 12 66, 14 74 C 18 84, 36 86, 58 80 C 78 76, 96 72, 108 66 Z" fill="url(#invbf1r-fw)" stroke="#6f8a68" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M106 64 C 84 52, 60 30, 40 14 M106 66 C 82 58, 56 46, 30 40 M104 68 C 80 66, 56 66, 24 68" fill="none" stroke="#6f8a68" stroke-width="0.7" opacity="0.5"/>
+    <path d="M40 6 C 22 1, 6 8, 4 22 C 2 36, 12 46, 26 54 C 20 50, 14 42, 14 30 C 15 20, 24 12, 40 10 Z" fill="#4f7452" opacity="0.5"/>
+    <circle cx="20" cy="26" r="2.2" fill="#fffaf0"/><circle cx="28" cy="16" r="1.6" fill="#fffaf0"/>
+    <circle cx="48" cy="42" r="5.5" fill="#dfd6b8" stroke="#6f8a68" stroke-width="1"/><circle cx="48" cy="42" r="2" fill="#4f7452"/>
+  </g>
+</svg></div>
+                <span class="bf-tiny-body"></span>
+              </div>
+              <div class="inv-bf inv-bf-2" aria-hidden="true">
+                <div class="bf-half bf-half-l"><svg class="bfw bfw-l" viewBox="0 0 110 130" aria-hidden="true">
+  <defs>
+    <linearGradient id="invbf2l-fw" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffdf8"/><stop offset="0.55" stop-color="#f3ecdd"/><stop offset="1" stop-color="#b9c7ad"/></linearGradient>
+    <linearGradient id="invbf2l-hw" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset="0.6" stop-color="#efe6d4"/><stop offset="1" stop-color="#a9bb9e"/></linearGradient>
+  </defs>
+  <g transform="">
+    <path d="M108 70 C 92 66, 70 70, 56 86 C 44 100, 44 118, 58 126 C 68 131, 80 126, 86 120 C 90 124, 98 124, 102 118 C 110 108, 112 88, 108 70 Z" fill="url(#invbf2l-hw)" stroke="#6f8a68" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M106 76 C 92 80, 78 92, 70 112 M100 72 C 84 74, 70 82, 60 98" fill="none" stroke="#6f8a68" stroke-width="0.7" opacity="0.5"/>
+    <path d="M108 66 C 96 40, 70 14, 40 6 C 22 1, 6 8, 4 22 C 2 36, 12 46, 26 54 C 18 58, 12 66, 14 74 C 18 84, 36 86, 58 80 C 78 76, 96 72, 108 66 Z" fill="url(#invbf2l-fw)" stroke="#6f8a68" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M106 64 C 84 52, 60 30, 40 14 M106 66 C 82 58, 56 46, 30 40 M104 68 C 80 66, 56 66, 24 68" fill="none" stroke="#6f8a68" stroke-width="0.7" opacity="0.5"/>
+    <path d="M40 6 C 22 1, 6 8, 4 22 C 2 36, 12 46, 26 54 C 20 50, 14 42, 14 30 C 15 20, 24 12, 40 10 Z" fill="#4f7452" opacity="0.5"/>
+    <circle cx="20" cy="26" r="2.2" fill="#fffaf0"/><circle cx="28" cy="16" r="1.6" fill="#fffaf0"/>
+    <circle cx="48" cy="42" r="5.5" fill="#dfd6b8" stroke="#6f8a68" stroke-width="1"/><circle cx="48" cy="42" r="2" fill="#4f7452"/>
+  </g>
+</svg></div>
+                <div class="bf-half bf-half-r"><svg class="bfw bfw-r" viewBox="0 0 110 130" aria-hidden="true">
+  <defs>
+    <linearGradient id="invbf2r-fw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffdf8"/><stop offset="0.55" stop-color="#f3ecdd"/><stop offset="1" stop-color="#b9c7ad"/></linearGradient>
+    <linearGradient id="invbf2r-hw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset="0.6" stop-color="#efe6d4"/><stop offset="1" stop-color="#a9bb9e"/></linearGradient>
+  </defs>
+  <g transform="translate(110 0) scale(-1 1)">
+    <path d="M108 70 C 92 66, 70 70, 56 86 C 44 100, 44 118, 58 126 C 68 131, 80 126, 86 120 C 90 124, 98 124, 102 118 C 110 108, 112 88, 108 70 Z" fill="url(#invbf2r-hw)" stroke="#6f8a68" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M106 76 C 92 80, 78 92, 70 112 M100 72 C 84 74, 70 82, 60 98" fill="none" stroke="#6f8a68" stroke-width="0.7" opacity="0.5"/>
+    <path d="M108 66 C 96 40, 70 14, 40 6 C 22 1, 6 8, 4 22 C 2 36, 12 46, 26 54 C 18 58, 12 66, 14 74 C 18 84, 36 86, 58 80 C 78 76, 96 72, 108 66 Z" fill="url(#invbf2r-fw)" stroke="#6f8a68" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M106 64 C 84 52, 60 30, 40 14 M106 66 C 82 58, 56 46, 30 40 M104 68 C 80 66, 56 66, 24 68" fill="none" stroke="#6f8a68" stroke-width="0.7" opacity="0.5"/>
+    <path d="M40 6 C 22 1, 6 8, 4 22 C 2 36, 12 46, 26 54 C 20 50, 14 42, 14 30 C 15 20, 24 12, 40 10 Z" fill="#4f7452" opacity="0.5"/>
+    <circle cx="20" cy="26" r="2.2" fill="#fffaf0"/><circle cx="28" cy="16" r="1.6" fill="#fffaf0"/>
+    <circle cx="48" cy="42" r="5.5" fill="#dfd6b8" stroke="#6f8a68" stroke-width="1"/><circle cx="48" cy="42" r="2" fill="#4f7452"/>
+  </g>
+</svg></div>
+                <span class="bf-tiny-body"></span>
+              </div>
+              </div>
+              <div class="inv-flowers" id="inv-flowers" aria-hidden="true">
+                <svg class="inv-flower inv-flower-1" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-2" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-3" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-4" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-5" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-6" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-7" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-8" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-9" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-10" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-11" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-12" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-13" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+                <svg class="inv-flower inv-flower-14" viewBox="0 0 40 40"><g fill="#fbf7ec" stroke="#d9d2bf" stroke-width="0.8"><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(0 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(72 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(144 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(216 20 20)"/><ellipse cx="20" cy="9" rx="5.5" ry="8" transform="rotate(288 20 20)"/></g><circle cx="20" cy="20" r="3.4" fill="#e8d9a8" stroke="#c9b784" stroke-width="0.8"/></svg>
+              </div>
+              <p class="wd-scroll-hint inv-hint" id="wedding-scroll-hint" aria-hidden="true">
+                <i class="wd-scroll-chevron"></i>
+              </p>
+            </div>
+
+            <!-- sealed envelope (the user's artwork), full screen; the flaps are cut from the same image -->
+            <div class="envp" id="envp" aria-hidden="false">
+              <div class="envp-flap envp-flap-top" aria-hidden="true"><div class="envp-face"></div><div class="envp-back"></div></div>
+              <div class="envp-flap envp-flap-right" aria-hidden="true"><div class="envp-face"></div><div class="envp-back"></div></div>
+              <div class="envp-flap envp-flap-bottom" aria-hidden="true"><div class="envp-face"></div><div class="envp-back"></div></div>
+              <div class="envp-flap envp-flap-left" aria-hidden="true"><div class="envp-face"></div><div class="envp-back"></div></div>
+              <button type="button" class="envp-seal" id="env-bow" aria-label="Open the invitation" hidden>
+                <svg class="envp-seal-svg" viewBox="0 0 120 120" aria-hidden="true">
+                <defs>
+                  <radialGradient id="envp-wax" cx="0.4" cy="0.35" r="0.7"><stop offset="0" stop-color="#d6ad5e"/><stop offset="0.55" stop-color="#b3862f"/><stop offset="1" stop-color="#7a5717"/></radialGradient>
+                  <radialGradient id="envp-rim" cx="0.5" cy="0.5" r="0.5"><stop offset="0.8" stop-color="#b3862f" stop-opacity="0"/><stop offset="0.9" stop-color="#e0bb6a"/><stop offset="1" stop-color="#7a5717"/></radialGradient>
+                </defs>
+                <path d="M60 5 C 80 3, 98 11, 107 28 C 116 44, 114 66, 107 82 C 98 101, 79 113, 58 113 C 36 113, 15 100, 9 78 C 3 60, 8 36, 21 21 C 31 10, 44 7, 60 5 Z" fill="url(#envp-wax)"/>
+                <path d="M60 5 C 80 3, 98 11, 107 28 C 116 44, 114 66, 107 82 C 98 101, 79 113, 58 113 C 36 113, 15 100, 9 78 C 3 60, 8 36, 21 21 C 31 10, 44 7, 60 5 Z" fill="url(#envp-rim)"/>
+                <circle cx="59" cy="59" r="39" fill="none" stroke="#7a5717" stroke-width="1.6" opacity="0.6"/>
+                <circle cx="59" cy="59" r="36" fill="none" stroke="#efd28a" stroke-width="0.8" opacity="0.6"/>
+                <text x="59" y="72" text-anchor="middle" font-family="'Alex Brush', cursive" font-size="40" fill="#f1d68f" opacity="0.95">J&amp;D</text>
+                <text x="58" y="71" text-anchor="middle" font-family="'Alex Brush', cursive" font-size="40" fill="#6b4e14" opacity="0.9">J&amp;D</text>
+              </svg>
+                <span class="envp-crack"></span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Memories gallery (revealed on scroll) -->
+          <section class="wd-memories sb-page" id="wedding-memories" aria-label="Our memories">
+            <div class="sb-grain" aria-hidden="true"></div>
+            <div class="sb-bg" aria-hidden="true">
+              <span class="sb-light"></span>
+              <span class="sb-shadow sb-shadow-1"></span>
+              <span class="sb-shadow sb-shadow-2"></span>
+              <span class="sb-sheen"></span>
+              <span class="sb-specks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+              <span class="sb-petals"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></span>
+              <span class="sb-hearts"><s>♥</s><s>♥</s><s>♥</s><s>♥</s><s>♥</s><s>♥</s></span>
+            </div>
+
+            <header class="sb-header">
+              <p class="sb-kicker">our memories</p>
+              <h3 class="sb-title">little moments, big memories</h3>
+            </header>
+
+            <div class="sb-canvas">
+              <!-- 1. big torn photo, top-left -->
+              <figure class="sb-item mem-card sb-torn sb-p1" data-full="/assets/images/memories/memory-3.jpg">
+                <img class="mem-card-a" src="/assets/images/memories/memory-3.jpg" alt="Jithin and Dona at the beach" loading="lazy" decoding="async">
+              </figure>
+              <div class="sb-item sb-note sb-n1">
+                <span class="sb-tape sb-tape-tl"></span>
+                <p>You're my<br>favourite<br>notification <svg class="sb-heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 20.5 3.6 12.4C1.5 10.3 1.5 6.9 3.6 4.8c2.1-2.1 5.4-2.1 7.5 0L12 5.7l.9-.9c2.1-2.1 5.4-2.1 7.5 0s2.1 5.5 0 7.6L12 20.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></p>
+              </div>
+
+              <!-- 2. polaroid top-right with paperclip -->
+              <figure class="sb-item mem-card sb-polaroid sb-p2" data-full="/assets/images/memories/memory-4.jpg">
+                <img class="mem-card-a" src="/assets/images/memories/memory-4.jpg" alt="Jithin and Dona at Tower Bridge, London" loading="lazy" decoding="async">
+                <svg class="sb-clip" viewBox="0 0 24 60" aria-hidden="true"><path d="M6 14v34a6 6 0 0 0 12 0V10a4 4 0 0 0-8 0v34a2 2 0 0 0 4 0V16" fill="none" stroke="#8d8d8d" stroke-width="2" stroke-linecap="round"/></svg>
+                <figcaption>us. <svg class="sb-heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 20.5 3.6 12.4C1.5 10.3 1.5 6.9 3.6 4.8c2.1-2.1 5.4-2.1 7.5 0L12 5.7l.9-.9c2.1-2.1 5.4-2.1 7.5 0s2.1 5.5 0 7.6L12 20.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></figcaption>
+              </figure>
+
+              <!-- 3. note + dried sprig -->
+              <div class="sb-item sb-note sb-n2">
+                <p>Little moments<br>Big memories <svg class="sb-heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 20.5 3.6 12.4C1.5 10.3 1.5 6.9 3.6 4.8c2.1-2.1 5.4-2.1 7.5 0L12 5.7l.9-.9c2.1-2.1 5.4-2.1 7.5 0s2.1 5.5 0 7.6L12 20.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></p>
+              </div>
+              <img class="sb-item sb-sprig" src="/assets/images/verse/leaves-top-right.png" alt="" aria-hidden="true" decoding="async">
+
+              <!-- 4. torn centre photo with tape -->
+              <figure class="sb-item mem-card sb-torn sb-p3" data-full="/assets/images/memories/memory-2.jpg">
+                <img class="mem-card-a" src="/assets/images/memories/memory-2.jpg" alt="Jithin and Dona on a bench under an autumn heart" loading="lazy" decoding="async">
+                <span class="sb-tape sb-tape-top"></span>
+              </figure>
+
+              <!-- 5. polaroid left -->
+              <figure class="sb-item mem-card sb-polaroid sb-p4" data-full="/assets/images/memories/memory-5.jpg">
+                <img class="mem-card-a" src="/assets/images/memories/memory-5.jpg" alt="Jithin and Dona by the Thames" loading="lazy" decoding="async">
+                <figcaption><svg class="sb-heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 20.5 3.6 12.4C1.5 10.3 1.5 6.9 3.6 4.8c2.1-2.1 5.4-2.1 7.5 0L12 5.7l.9-.9c2.1-2.1 5.4-2.1 7.5 0s2.1 5.5 0 7.6L12 20.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></figcaption>
+              </figure>
+
+              <!-- 6. torn right photo -->
+              <figure class="sb-item mem-card sb-torn sb-p5" data-full="/assets/images/memories/memory-1.jpg">
+                <img class="mem-card-a" src="/assets/images/memories/memory-1.jpg" alt="Jithin and Dona, a sunny selfie" loading="lazy" decoding="async">
+              </figure>
+
+              <!-- 7. lined note -->
+              <div class="sb-item sb-note sb-lined sb-n3">
+                <span class="sb-tape sb-tape-top"></span>
+                <p class="sb-lined-title">reasons I love you:</p>
+                <ol>
+                  <li>you make me smile</li>
+                  <li>you make me laugh</li>
+                  <li>you make me happy</li>
+                  <li>you make life better</li>
+                </ol>
+                <span class="sb-lined-heart"><svg class="sb-heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 20.5 3.6 12.4C1.5 10.3 1.5 6.9 3.6 4.8c2.1-2.1 5.4-2.1 7.5 0L12 5.7l.9-.9c2.1-2.1 5.4-2.1 7.5 0s2.1 5.5 0 7.6L12 20.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+              </div>
+
+              <!-- 8. polaroid bottom with tape -->
+              <figure class="sb-item mem-card sb-polaroid sb-p6" data-full="/assets/images/memories/memory-6.jpg">
+                <img class="mem-card-a" src="/assets/images/memories/memory-6.jpg" alt="Jithin and Dona at Tower Bridge" loading="lazy" decoding="async">
+                <span class="sb-tape sb-tape-top"></span>
+                <figcaption>Jithin &amp; Dona</figcaption>
+              </figure>
+
+              <!-- 9. forever & always + brass button -->
+              <p class="sb-item sb-forever">forever<br>&amp;<br>always</p>
+              <span class="sb-item sb-button" aria-hidden="true"></span>
+
+              <!-- doodled hearts -->
+              <span class="sb-item sb-doodle sb-d1"><svg class="sb-heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 20.5 3.6 12.4C1.5 10.3 1.5 6.9 3.6 4.8c2.1-2.1 5.4-2.1 7.5 0L12 5.7l.9-.9c2.1-2.1 5.4-2.1 7.5 0s2.1 5.5 0 7.6L12 20.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+              <span class="sb-item sb-doodle sb-d2"><svg class="sb-heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 20.5 3.6 12.4C1.5 10.3 1.5 6.9 3.6 4.8c2.1-2.1 5.4-2.1 7.5 0L12 5.7l.9-.9c2.1-2.1 5.4-2.1 7.5 0s2.1 5.5 0 7.6L12 20.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+              <span class="sb-item sb-doodle sb-d3"><svg class="sb-heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 20.5 3.6 12.4C1.5 10.3 1.5 6.9 3.6 4.8c2.1-2.1 5.4-2.1 7.5 0L12 5.7l.9-.9c2.1-2.1 5.4-2.1 7.5 0s2.1 5.5 0 7.6L12 20.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+            </div>
+
+            <p class="sb-foot">tap a photo to view</p>
+          </section>
+
+          <!-- Catch the hearts: a little game at the end -->
+          <section class="wd-game" id="wedding-game" aria-label="Catch the hearts game">
+            <!-- Sunny background: glows, heart pattern, floating hearts and sparkles -->
+            <div class="game-bg" aria-hidden="true">
+              <span class="game-glow game-glow-1"></span>
+              <span class="game-glow game-glow-2"></span>
+              <span class="game-glow game-glow-3"></span>
+              <span class="game-pattern"></span>
+              <span class="game-float"></span><span class="game-float"></span><span class="game-float"></span><span class="game-float"></span>
+              <span class="game-float"></span><span class="game-float"></span><span class="game-float"></span><span class="game-float"></span>
+              <span class="game-float"></span><span class="game-float"></span>
+              <span class="game-spark">✦</span><span class="game-spark">✦</span><span class="game-spark">✧</span><span class="game-spark">✦</span><span class="game-spark">✧</span>
+            </div>
+
+            <div class="game-intro" id="game-intro">
+              <div class="game-photo">
+                <img src="/assets/images/memories/memory-2.jpg" alt="Jithin and Dona on a bench under an autumn heart" loading="lazy" decoding="async">
+                <span class="game-photo-heart" aria-hidden="true">♥</span>
+              </div>
+              <p class="game-kicker">one more thing before you go</p>
+              <h3 class="game-q">Will you gather roses for us?</h3>
+              <p class="game-sub">Roses are falling from the sky for our big day. Pick an empty bouquet, catch as many as you can and watch it bloom, but don't let a single rose touch the ground!</p>
+              <div class="game-result" id="game-result" hidden>
+                <p class="game-result-last" id="game-result-last"></p>
+                <div class="game-result-board">
+                  <span class="game-result-side">
+                    <span class="game-avatar game-avatar-groom"><img src="/assets/images/people/couple-groom.png" alt="Jithin"><i class="game-crown" id="game-rcrown-groom">👑</i></span>
+                    <b id="game-result-groom">000</b>
+                    <small>Jithin's bouquet</small>
+                  </span>
+                  <span class="game-result-vs">vs</span>
+                  <span class="game-result-side">
+                    <span class="game-avatar game-avatar-bride"><img src="/assets/images/people/couple-bride.png" alt="Dona"><i class="game-crown" id="game-rcrown-bride">👑</i></span>
+                    <b id="game-result-bride">000</b>
+                    <small>Dona's bouquet</small>
+                  </span>
+                </div>
+              </div>
+              <div class="game-actions">
+                <button type="button" class="game-btn game-btn-primary" id="game-yes">Yes, let's play! 🌹</button>
+                <button type="button" class="game-btn game-btn-ghost" id="game-no">Maybe later</button>
+              </div>
+            </div>
+
+            <div class="game-later" id="game-later" hidden>
+              <p class="game-q">No worries, we love you anyway ♥</p>
+              <p class="game-sub">The roses will be waiting whenever you change your mind.</p>
+              <button type="button" class="game-btn game-btn-primary" id="game-later-yes">Okay, let's play!</button>
+            </div>
+
+            <div class="game-pick" id="game-pick" hidden>
+              <p class="game-kicker">choose your bouquet</p>
+              <h3 class="game-q">Whose bouquet will you make?</h3>
+              <div class="game-sides">
+                <span class="game-vs" aria-hidden="true">vs</span>
+                <button type="button" class="game-side" data-side="groom">
+                  <span class="game-avatar game-avatar-groom"><img src="/assets/images/people/couple-groom.png" alt=""></span>
+                  <span class="game-side-name">Jithin's bouquet</span>
+                  <span class="game-side-sub">gather roses for Dona</span>
+                </button>
+                <button type="button" class="game-side" data-side="bride">
+                  <span class="game-avatar game-avatar-bride"><img src="/assets/images/people/couple-bride.png" alt=""></span>
+                  <span class="game-side-name">Dona's bouquet</span>
+                  <span class="game-side-sub">gather roses for Jithin</span>
+                </button>
+              </div>
+              <p class="game-hint">Drag left and right to move the bouquet and fill it with roses</p>
+            </div>
+
+            <div class="game-stage" id="game-stage" hidden>
+              <div class="game-top">
+                <button type="button" class="game-close" id="game-close" aria-label="Leave the game">✕</button>
+                <div class="game-best">
+                  <span class="game-best-num" id="game-best-groom">000</span>
+                  <span class="game-best-avatars">
+                    <span class="game-avatar game-avatar-groom"><img src="/assets/images/people/couple-groom.png" alt="Jithin"><i class="game-crown" id="game-crown-groom">👑</i></span>
+                    <span class="game-avatar game-avatar-bride"><img src="/assets/images/people/couple-bride.png" alt="Dona"><i class="game-crown" id="game-crown-bride">👑</i></span>
+                  </span>
+                  <span class="game-best-num" id="game-best-bride">000</span>
+                </div>
+              </div>
+              <div class="game-score" id="game-score" aria-live="polite">0</div>
+              <div class="game-ground" aria-hidden="true"></div>
+              <canvas class="game-canvas" id="game-canvas"></canvas>
+
+              <div class="game-over" id="game-over" hidden>
+                <div class="game-over-card">
+                  <div class="game-over-petals" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                  <div class="game-over-gift">
+                    <span class="game-avatar game-over-avatar" id="game-over-avatar"><img src="/assets/images/people/couple-bride.png" alt=""></span>
+                    <canvas class="game-over-bouquet" id="game-over-bouquet" width="300" height="300" aria-label="The bouquet you made"></canvas>
+                  </div>
+                  <p class="game-over-for" id="game-over-for">You made this bouquet for Dona</p>
+                  <p class="game-over-score" id="game-over-score">0</p>
+                  <p class="game-over-label">roses gathered</p>
+                  <h3 class="game-over-title" id="game-over-title">Oops!</h3>
+                  <p class="game-over-text" id="game-over-text"></p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- A little drive into forever: the car video -->
+          <section class="wd-video" id="wedding-video" aria-label="Jithin and Dona drive off into the sunset">
+            <div class="vid-backdrop" aria-hidden="true">
+              <span class="vid-stars"></span>
+              <span class="vid-sun"></span>
+              <span class="vid-glow"></span>
+              <span class="vid-hearts"><span class="vid-heart"></span><span class="vid-heart"></span><span class="vid-heart"></span><span class="vid-heart"></span><span class="vid-heart"></span><span class="vid-heart"></span><span class="vid-heart"></span><span class="vid-heart"></span><span class="vid-heart"></span><span class="vid-heart"></span><span class="vid-heart"></span><span class="vid-heart"></span><span class="vid-heart"></span><span class="vid-heart"></span></span>
+            </div>
+            <p class="vid-kicker">and so the journey begins…</p>
+            <div class="vid-frame">
+              <video id="car-video" class="vid-player" src="/assets/videos/car-video.mp4" muted loop playsinline preload="metadata" aria-label="Animated film of Jithin and Dona driving a blue convertible into the sunset"></video>
+              <div class="vid-patch" aria-hidden="true"></div>
+            </div>
+            <div class="vid-welcome">
+              <p class="vid-welcome-title">All are welcome</p>
+              <p class="vid-welcome-sub">to share the joy of our new beginning</p>
+              <span class="vid-welcome-line" aria-hidden="true"><i></i>♥<i></i></span>
+            </div>
+          </section>
+
+          <!-- Finale: how to find us, send your wishes, thank you -->
+          <section class="wd-final" id="wedding-final" aria-label="Venues, greetings and thank you">
+            <div class="fin-bg" aria-hidden="true">
+              <img class="fin-leaf fin-leaf-tl" src="/assets/images/verse/leaves-top-left.png" alt="" decoding="async">
+              <img class="fin-leaf fin-leaf-tr" src="/assets/images/verse/leaves-top-right.png" alt="" decoding="async">
+            </div>
+
+            <!-- Venues -->
+            <div class="fin-block fin-reveal">
+              <p class="fin-kicker">find your way to us</p>
+              <h3 class="fin-title">Where we'll be waiting</h3>
+            </div>
+
+            <div class="fin-venues">
+              <article class="fin-venue fin-reveal">
+                <span class="fin-stamp" aria-hidden="true"><b>J ♥ D</b><small>07 · 01 · 27</small></span>
+                <span class="fin-venue-tag">Engagement</span>
+                <h4 class="fin-venue-name">St. Stephen's Knanaya Catholic Church</h4>
+                <p class="fin-venue-place">Uzhavoor, Kottayam</p>
+                <p class="fin-venue-when">Thursday, 07 January 2027 · 5:30 PM onwards</p>
+                <p class="fin-venue-sub">Reception to follow at St. Stephen's Parish Hall</p>
+                <a class="fin-btn" href="https://www.google.com/maps/search/?api=1&query=St.%20Stephen's%20Knanaya%20Catholic%20Church%2C%20Uzhavoor%2C%20Kottayam%2C%20Kerala" target="_blank" rel="noopener"><i class="fin-pin" aria-hidden="true"></i>Get directions</a>
+              </article>
+
+              <article class="fin-venue fin-reveal">
+                <span class="fin-stamp fin-stamp-gold" aria-hidden="true"><b>J ♥ D</b><small>11 · 01 · 27</small></span>
+                <span class="fin-venue-tag fin-venue-tag-gold">Wedding</span>
+                <h4 class="fin-venue-name">Sacred Heart Mount Monastery Church</h4>
+                <p class="fin-venue-place">Knanaya Catholic Church · S.H. Mount, Kottayam</p>
+                <p class="fin-venue-when">Monday, 11 January 2027 · 4:00 PM onwards</p>
+                <p class="fin-venue-sub">Reception to follow at Aithousa Convention Centre, S.H. Mount</p>
+                <div class="fin-btn-row">
+                  <a class="fin-btn" href="https://www.google.com/maps/search/?api=1&query=Sacred%20Heart%20Mount%20Monastery%20Church%2C%20S.H.%20Mount%2C%20Kottayam%2C%20Kerala" target="_blank" rel="noopener"><i class="fin-pin" aria-hidden="true"></i>Church directions</a>
+                  <a class="fin-btn fin-btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Aithousa%20Convention%20Centre%2C%20S.H.%20Mount%2C%20Kottayam%2C%20Kerala" target="_blank" rel="noopener"><i class="fin-pin" aria-hidden="true"></i>Reception</a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Greetings -->
+            <div class="fin-block fin-greet fin-reveal">
+              <div class="greet-petals" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <p class="fin-kicker greet-kicker">send your wishes</p>
+              <h3 class="fin-title greet-title">A few words for Jithin &amp; Dona</h3>
+              <form class="greet-form" id="greet-form" novalidate>
+                <div class="greet-burst" id="greet-burst" aria-hidden="true"></div>
+                <svg class="greet-rose" viewBox="0 0 120 120" aria-hidden="true">
+                  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M60 78 C 58 95, 56 104, 54 114" stroke="#7a9a6a" stroke-width="2.2"/>
+                    <path d="M57 96 C 48 92, 42 94, 36 100 C 44 102, 52 101, 57 96 Z" fill="#9fbb8c" stroke="#7a9a6a" stroke-width="1.2"/>
+                    <path d="M58 88 C 66 84, 73 86, 79 92 C 71 94, 63 93, 58 88 Z" fill="#9fbb8c" stroke="#7a9a6a" stroke-width="1.2"/>
+                    <path d="M60 78 C 38 78, 30 62, 36 46 C 42 32, 56 28, 62 30 C 76 26, 90 36, 88 52 C 86 68, 76 78, 60 78 Z" fill="#f0a3b1" stroke="#c9566f" stroke-width="1.6"/>
+                    <path d="M44 60 C 46 48, 54 42, 64 42 C 74 42, 80 50, 78 60 C 76 70, 68 74, 60 73 C 52 72, 44 68, 44 60 Z" fill="#f6bfc9" stroke="#c9566f" stroke-width="1.4"/>
+                    <path d="M52 60 C 54 52, 60 49, 66 50 C 72 52, 74 58, 70 63 C 66 68, 58 67, 54 64 C 52 62, 52 61, 52 60 Z" fill="#fbd6dd" stroke="#c9566f" stroke-width="1.2"/>
+                    <path d="M58 58 C 60 55, 64 55, 65 58 C 66 61, 62 63, 60 61" stroke="#c9566f" stroke-width="1.2"/>
+                    <path d="M36 46 C 30 52, 28 60, 30 66" stroke="#c9566f" stroke-width="1.2"/>
+                    <path d="M88 52 C 92 58, 92 66, 88 72" stroke="#c9566f" stroke-width="1.2"/>
+                  </g>
+                </svg>
+                <span class="greet-corner greet-corner-tl" aria-hidden="true"></span>
+                <span class="greet-corner greet-corner-br" aria-hidden="true"></span>
+                <label class="greet-label" for="greet-name">Your name</label>
+                <input class="greet-input" id="greet-name" type="text" name="name" autocomplete="name" placeholder="Who is this from?" maxlength="60">
+                <label class="greet-label" for="greet-message">Your wishes</label>
+                <textarea class="greet-input greet-textarea" id="greet-message" name="message" rows="4" maxlength="500" placeholder="Write something sweet, funny or heartfelt…"></textarea>
+                <div class="greet-chips" aria-label="Quick wishes">
+                  <button type="button" class="greet-chip" data-text="Wishing you a lifetime of love, laughter and happily ever after. Congratulations, Jithin & Dona!">Lifetime of love ♥</button>
+                  <button type="button" class="greet-chip" data-text="May God bless your marriage with joy, peace and endless blessings. So happy for you both!">God bless you both</button>
+                  <button type="button" class="greet-chip" data-text="Here's to the two of you, the best team we know. Can't wait to celebrate with you on the big day!">Can't wait to celebrate</button>
+                </div>
+                <div class="greet-actions">
+                  <button type="submit" class="fin-btn fin-btn-primary" id="greet-send">Post your wishes ♥</button>
+                </div>
+                <p class="greet-status" id="greet-status" aria-live="polite"></p>
+              </form>
+
+              <!-- The wishes wall: every posted greeting appears here -->
+              <div class="greet-wall" id="greet-wall" aria-live="polite" aria-label="Wishes from our loved ones">
+                <p class="greet-wall-title"><span>Wishes from our loved ones</span><b class="greet-wall-count" id="greet-wall-count">0</b></p>
+                <p class="greet-wall-empty" id="greet-wall-empty">Be the first to leave a few words for Jithin &amp; Dona ♥</p>
+                <ul class="greet-wall-list" id="greet-wall-list"></ul>
+              </div>
+            </div>
+
+            <!-- Thank you -->
+            <div class="fin-thanks fin-reveal">
+              <span class="fin-thanks-cross" aria-hidden="true">✠</span>
+              <p class="fin-thanks-title">Thank you</p>
+              <p class="fin-thanks-text">for being part of our story. Your presence, prayers and love mean the world to us.</p>
+              <p class="fin-thanks-names"><span>Jithin</span><em>&amp;</em><span>Dona</span></p>
+              <p class="fin-thanks-date">11 · January · 2027</p>
+              <div class="cal" aria-label="January 2027: engagement on the 7th, wedding on the 11th">
+                <span class="cal-ring cal-ring-l" aria-hidden="true"></span>
+                <span class="cal-ring cal-ring-r" aria-hidden="true"></span>
+                <div class="cal-head">
+                  <span class="cal-month">January</span>
+                  <span class="cal-year">2027</span>
+                </div>
+                <div class="cal-grid" role="presentation">
+                  <span class="cal-dow">S</span><span class="cal-dow">M</span><span class="cal-dow">T</span><span class="cal-dow">W</span><span class="cal-dow">T</span><span class="cal-dow">F</span><span class="cal-dow">S</span>
+                  <span class="cal-day cal-empty"></span><span class="cal-day cal-empty"></span><span class="cal-day cal-empty"></span><span class="cal-day cal-empty"></span><span class="cal-day cal-empty"></span><span class="cal-day"><b>1</b></span><span class="cal-day"><b>2</b></span><span class="cal-day"><b>3</b></span><span class="cal-day"><b>4</b></span><span class="cal-day"><b>5</b></span><span class="cal-day"><b>6</b></span><span class="cal-day cal-event cal-engagement" title="Engagement · 7 January 2027"><b>7</b><svg class="cal-rings" viewBox="0 0 40 28" aria-hidden="true"><circle cx="15" cy="15" r="9" fill="none" stroke="#c9a24a" stroke-width="2.6"/><circle cx="25" cy="15" r="9" fill="none" stroke="#e2b763" stroke-width="2.6"/><path d="M22 7 l3 -4 l3 4 l-3 3 z" fill="#fff" stroke="#c9a24a" stroke-width="0.8"/></svg></span><span class="cal-day"><b>8</b></span><span class="cal-day"><b>9</b></span><span class="cal-day"><b>10</b></span><span class="cal-day cal-event cal-wedding" title="Wedding · 11 January 2027"><b>11</b><svg class="cal-heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 20.5 3.6 12.4C1.5 10.3 1.5 6.9 3.6 4.8c2.1-2.1 5.4-2.1 7.5 0L12 5.7l.9-.9c2.1-2.1 5.4-2.1 7.5 0s2.1 5.5 0 7.6L12 20.5z" fill="#e8475f"/><path d="M6.5 7.5c1-1.2 2.4-1.6 3.6-1.2" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/></svg></span><span class="cal-day"><b>12</b></span><span class="cal-day"><b>13</b></span><span class="cal-day"><b>14</b></span><span class="cal-day"><b>15</b></span><span class="cal-day"><b>16</b></span><span class="cal-day"><b>17</b></span><span class="cal-day"><b>18</b></span><span class="cal-day"><b>19</b></span><span class="cal-day"><b>20</b></span><span class="cal-day"><b>21</b></span><span class="cal-day"><b>22</b></span><span class="cal-day"><b>23</b></span><span class="cal-day"><b>24</b></span><span class="cal-day"><b>25</b></span><span class="cal-day"><b>26</b></span><span class="cal-day"><b>27</b></span><span class="cal-day"><b>28</b></span><span class="cal-day"><b>29</b></span><span class="cal-day"><b>30</b></span><span class="cal-day"><b>31</b></span>
+                </div>
+                <div class="cal-legend">
+                  <span><svg class="cal-rings" viewBox="0 0 40 28" aria-hidden="true"><circle cx="15" cy="15" r="9" fill="none" stroke="#c9a24a" stroke-width="2.6"/><circle cx="25" cy="15" r="9" fill="none" stroke="#e2b763" stroke-width="2.6"/><path d="M22 7 l3 -4 l3 4 l-3 3 z" fill="#fff" stroke="#c9a24a" stroke-width="0.8"/></svg><em>Engagement · 7 Jan</em></span>
+                  <span><svg class="cal-heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 20.5 3.6 12.4C1.5 10.3 1.5 6.9 3.6 4.8c2.1-2.1 5.4-2.1 7.5 0L12 5.7l.9-.9c2.1-2.1 5.4-2.1 7.5 0s2.1 5.5 0 7.6L12 20.5z" fill="#e8475f"/><path d="M6.5 7.5c1-1.2 2.4-1.6 3.6-1.2" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/></svg><em>Wedding · 11 Jan</em></span>
+                </div>
+              </div>
+              <p class="fin-thanks-hash">#jithinwedsdona</p>
+            </div>
+          </section>
+        </article>
+
+      </div>
+
+      <div class="wd-dots" id="wedding-dots" aria-hidden="true">
+        <span class="active"></span><span></span><span></span>
+      </div>
+
+      <button type="button" class="wc-tap-prompt wd-next-btn" id="wedding-next-btn">Next ✦</button>
+
+      <!-- Enlarged memory photo -->
+      <div class="mem-lightbox" id="memory-lightbox" role="dialog" aria-modal="true" aria-label="Photo" hidden>
+        <div class="lb-backdrop" id="memory-lightbox-bg" aria-hidden="true"></div>
+        <button type="button" class="mem-lightbox-close" id="memory-lightbox-close" aria-label="Close photo">✕</button>
+        <span class="lb-count" id="memory-lightbox-count" aria-live="polite"></span>
+        <button type="button" class="lb-nav lb-prev" id="memory-lightbox-prev" aria-label="Previous photo">‹</button>
+        <button type="button" class="lb-nav lb-next" id="memory-lightbox-next" aria-label="Next photo">›</button>
+        <figure class="lb-polaroid" id="memory-lightbox-frame">
+          <span class="lb-tape lb-tape-l" aria-hidden="true"></span>
+          <span class="lb-tape lb-tape-r" aria-hidden="true"></span>
+          <img class="mem-lightbox-img" id="memory-lightbox-img" src="" alt="">
+          <figcaption class="lb-caption" id="memory-lightbox-caption"></figcaption>
+        </figure>
+        <p class="lb-hint" aria-hidden="true">swipe or tap the arrows · tap outside to close</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
