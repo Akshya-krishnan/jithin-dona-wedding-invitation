@@ -7357,3 +7357,9 @@ button, .wc-tap-prompt, .fin-btn, .game-btn, .game-side, .mem-card, .lb-nav { to
 
 /* scrolling slide: no rubber-band bounce that reveals the page behind */
 .wd-slide-couple { overscroll-behavior-y: none; -webkit-overflow-scrolling: touch; }
+
+/* avatars: always a true circle crop, never stretched */
+.game-avatar { aspect-ratio: 1; flex: 0 0 auto; }
+.game-avatar img { object-fit: cover; object-position: 50% 30%; aspect-ratio: 1; }
+.game-best-avatars .game-avatar { width: 58px; height: 58px; }
+.game-best-avatars .game-avatar + .game-avatar { margin-left: -6px; }
