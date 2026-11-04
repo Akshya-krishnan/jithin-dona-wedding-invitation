@@ -345,16 +345,16 @@ export class IntroExperience {
       if (e) e.stopPropagation();
       if (scene.classList.contains('untying') || scene.classList.contains('opened')) return;
       scene.classList.add('untying', 'flap-open');                  // both flaps start swinging open
-      setTimeout(() => scene.classList.add('card-out'), 900);
+      setTimeout(() => scene.classList.add('card-out'), 400);
       setTimeout(() => {
         scene.classList.add('opened');                              // envelope gone, names letter in
         this.releaseInvButterflies();
         if (this.coupleSlide) this.coupleSlide.classList.remove('env-sealed');
-      }, 1900);
+      }, 950);
       if (this.audioPlayer && !this.audioPlayer.isPlaying) this.audioPlayer.play();
     };
     bow.addEventListener('click', open);
-    this.envOpenTimer = setTimeout(() => open(), 1400);
+    this.envOpenTimer = setTimeout(() => open(), 450);
     bow.addEventListener('pointerdown', (e) => e.stopPropagation());
     scene.addEventListener('click', (e) => { if (!scene.classList.contains('opened')) open(e); });
   }
@@ -370,7 +370,7 @@ export class IntroExperience {
     if (this.invBfTimer) clearTimeout(this.invBfTimer);
     this.invBfTimer = setTimeout(() => {
       flies.forEach((f) => { f.classList.remove('fly'); void f.offsetWidth; f.classList.add('fly'); });
-      setTimeout(() => { if (flowers) flowers.classList.add('on'); }, 6000);
+      setTimeout(() => { if (flowers) flowers.classList.add('on'); }, 2500);
     }, 400);
   }
 
@@ -499,6 +499,7 @@ export class IntroExperience {
 
   showStage(stage) {
     if (!stage) return;
+    if (stage.classList.contains('playing') && !stage.classList.contains('stage-hidden')) return; // already showing: never restart it
     stage.classList.remove('stage-hidden', 'playing');
     void stage.offsetWidth; // restart the CSS animations from the beginning
     stage.classList.add('playing');

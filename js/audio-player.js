@@ -25,7 +25,7 @@ export class BackgroundMusic {
     audio.id = 'background-music-track';
     audio.src = TRACK;
     audio.loop = true;
-    audio.preload = 'auto';
+    audio.preload = 'metadata';
     audio.setAttribute('playsinline', '');
     audio.volume = 0;
     audio.style.display = 'none';

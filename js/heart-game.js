@@ -50,8 +50,8 @@ export class HeartCatchGame {
     this.score = 0;
     this.best = this.loadBest();
     this.avatars = {
-      groom: this.loadImage('/assets/images/people/couple-groom.png'),
-      bride: this.loadImage('/assets/images/people/couple-bride.png')
+      groom: this.loadImage('/assets/images/people/groom-face.png'),
+      bride: this.loadImage('/assets/images/people/bride-face.png')
     };
     this.audioCtx = null;
 
@@ -145,11 +145,12 @@ export class HeartCatchGame {
     if (laterYes) laterYes.addEventListener('click', () => { this.hide(this.later); this.show(this.pick); this.scrollToSection(); });
 
     this.section.querySelectorAll('[data-side]').forEach((btn) => {
-      btn.addEventListener('click', () => this.start(btn.dataset.side));
+      btn.addEventListener('click', () => { if (this.over && !this.over.hidden) return; this.start(btn.dataset.side); });
     });
 
     const close = document.getElementById('game-close');
-    if (close) close.addEventListener('click', () => this.returnToIntro(this.running ? this.score : null));
+    if (close) close.addEventListener('click', () => { if (this.over && !this.over.hidden) return; this.returnToIntro(this.running ? this.score : null); });
+    if (this.over) ['click', 'pointerdown', 'pointerup', 'touchstart', 'touchend'].forEach((ev) => this.over.addEventListener(ev, (e) => { e.stopPropagation(); if (ev !== 'click') e.preventDefault(); }, { passive: false }));
 
     if (this.canvas) {
       this.canvas.style.touchAction = 'none';
@@ -176,13 +177,20 @@ export class HeartCatchGame {
       });
     }
 
-    window.addEventListener('resize', () => { if (this.running) this.resize(); });
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      if (!this.running) return;
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => { if (this.running) { this.resize(); this.bouquetCache = null; } }, 150);
+    });
   }
 
   /* --------------------------------------------------------------- game */
   resize() {
     const rect = this.stage.getBoundingClientRect();
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const dpr = Math.min(1.5, window.devicePixelRatio || 1);
+    this.spriteCache = new Map();
+    this.bouquetCache = null;
     this.canvas.width = Math.round(rect.width * dpr);
     this.canvas.height = Math.round(rect.height * dpr);
     this.canvas.style.width = `${rect.width}px`;
@@ -329,51 +337,52 @@ export class HeartCatchGame {
   /** A rose seen from above: layered petals around a tight centre, with two leaves. */
   drawRose(h) {
     const ctx = this.ctx;
-    const s = h.size;
+    const sprite = this.roseSprite(h.hue, h.kind === 'bud' ? 'bud' : 'rose');
+    const s = h.size * 2.2; // sprite has margin for leaves
     ctx.save();
     ctx.translate(h.x, h.y);
     ctx.rotate(h.rot + Math.sin(h.phase) * 0.12);
-    ctx.shadowColor = 'rgba(120, 20, 50, 0.3)';
-    ctx.shadowBlur = s * 0.2;
+    ctx.drawImage(sprite, -s / 2, -s / 2, s, s);
+    ctx.restore();
+  }
 
-    // leaves
+  /** One pre-rendered rose per hue/kind (drawn once at 96px, scaled when used). */
+  roseSprite(hue, kind) {
+    const key = hue + ':' + kind;
+    if (!this.spriteCache) this.spriteCache = new Map();
+    let c = this.spriteCache.get(key);
+    if (c) return c;
+    const size = 96;
+    c = document.createElement('canvas');
+    c.width = size; c.height = size;
+    const ctx = c.getContext('2d');
+    const s = size / 2.2;
+    ctx.translate(size / 2, size / 2);
     ctx.fillStyle = '#5f8f5a';
     for (const a of [2.4, 0.5]) {
-      ctx.save();
-      ctx.rotate(a);
-      ctx.beginPath();
-      ctx.ellipse(s * 0.42, 0, s * 0.28, s * 0.12, 0, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.save(); ctx.rotate(a);
+      ctx.beginPath(); ctx.ellipse(s * 0.42, 0, s * 0.28, s * 0.12, 0, 0, Math.PI * 2); ctx.fill();
       ctx.restore();
     }
-
-    // petals: outer ring → inner
-    const rings = h.kind === 'bud' ? [[6, 0.42, 0.78], [5, 0.26, 0.6]] : [[7, 0.5, 0.78], [6, 0.36, 0.64], [5, 0.22, 0.52]];
+    const rings = kind === 'bud' ? [[6, 0.42, 0.78], [5, 0.26, 0.6]] : [[7, 0.5, 0.78], [6, 0.36, 0.64], [5, 0.22, 0.52]];
     rings.forEach(([n, rad, light], ri) => {
       for (let i = 0; i < n; i++) {
-        const ang = (i / n) * Math.PI * 2 + ri * 0.4;
-        ctx.save();
-        ctx.rotate(ang);
-        const g = ctx.createRadialGradient(rad * s * 0.6, 0, s * 0.05, rad * s * 0.6, 0, rad * s);
-        g.addColorStop(0, `hsl(${h.hue}, 85%, ${Math.round(light * 100)}%)`);
-        g.addColorStop(1, `hsl(${h.hue}, 80%, ${Math.round(light * 100) - 22}%)`);
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.ellipse(rad * s * 0.55, 0, rad * s * 0.5, rad * s * 0.34, 0, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.save(); ctx.rotate((i / n) * Math.PI * 2 + ri * 0.4);
+        const gr = ctx.createRadialGradient(rad * s * 0.6, 0, s * 0.05, rad * s * 0.6, 0, rad * s);
+        gr.addColorStop(0, 'hsl(' + hue + ', 85%, ' + Math.round(light * 100) + '%)');
+        gr.addColorStop(1, 'hsl(' + hue + ', 80%, ' + (Math.round(light * 100) - 22) + '%)');
+        ctx.fillStyle = gr;
+        ctx.beginPath(); ctx.ellipse(rad * s * 0.55, 0, rad * s * 0.5, rad * s * 0.34, 0, 0, Math.PI * 2); ctx.fill();
         ctx.restore();
       }
     });
-    // centre
-    ctx.shadowBlur = 0;
-    const c = ctx.createRadialGradient(0, 0, 0, 0, 0, s * 0.16);
-    c.addColorStop(0, `hsl(${h.hue}, 90%, 58%)`);
-    c.addColorStop(1, `hsl(${h.hue}, 85%, 34%)`);
-    ctx.fillStyle = c;
-    ctx.beginPath();
-    ctx.arc(0, 0, s * 0.16, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
+    const cg = ctx.createRadialGradient(0, 0, 0, 0, 0, s * 0.16);
+    cg.addColorStop(0, 'hsl(' + hue + ', 90%, 58%)');
+    cg.addColorStop(1, 'hsl(' + hue + ', 85%, 34%)');
+    ctx.fillStyle = cg;
+    ctx.beginPath(); ctx.arc(0, 0, s * 0.16, 0, Math.PI * 2); ctx.fill();
+    this.spriteCache.set(key, c);
+    return c;
   }
 
   drawBasket() {
@@ -381,7 +390,22 @@ export class HeartCatchGame {
   }
 
   drawJar() {
-    this.drawBouquet();
+    // the bouquet only changes when a rose is caught, so keep it as a cached image
+    const key = this.side + ':' + this.jarHearts.length + ':' + Math.round(this.basket.w) + ':' + (this.avatars[this.side] && this.avatars[this.side].complete ? 1 : 0);
+    if (!this.bouquetCache || this.bouquetCache.key !== key) {
+      const w = Math.ceil(this.basket.w * 1.5);
+      const h = Math.ceil(this.basket.h * 2.4);
+      const c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      const saved = { ctx: this.ctx, basket: this.basket };
+      this.ctx = c.getContext('2d');
+      this.basket = { x: w / 2, y: h - this.basket.h - 4, w: saved.basket.w, h: saved.basket.h };
+      this.drawBouquet();
+      this.ctx = saved.ctx; this.basket = saved.basket;
+      this.bouquetCache = { key, canvas: c, w, h };
+    }
+    const bc = this.bouquetCache;
+    this.ctx.drawImage(bc.canvas, Math.round(this.basket.x - bc.w / 2), Math.round(this.basket.y + this.basket.h + 4 - bc.h));
   }
 
   /** An empty bouquet (paper wrap + ribbon) that fills with the roses caught. */
@@ -408,7 +432,7 @@ export class HeartCatchGame {
     ctx.clip();
     if (img && img.complete && img.naturalWidth) {
       const side = img.naturalWidth;
-      const srcY = this.side === 'bride' ? img.naturalHeight * 0.02 : 0;
+      const srcY = 0;
       ctx.drawImage(img, 0, srcY, side, side, x - r, ay - r, r * 2, r * 2);
     }
     ctx.restore();
@@ -425,9 +449,7 @@ export class HeartCatchGame {
     const topY = y + h * 0.1;
     const botY = y + h;
     ctx.save();
-    ctx.shadowColor = 'rgba(120, 80, 20, 0.28)';
-    ctx.shadowBlur = 14 * dpr;
-    ctx.shadowOffsetY = 6 * dpr;
+    ctx.shadowColor = 'rgba(0,0,0,0)';
     const paper = ctx.createLinearGradient(x - topW / 2, 0, x + topW / 2, 0);
     paper.addColorStop(0, '#e8d7bf');
     paper.addColorStop(0.5, '#fff8ec');
@@ -515,6 +537,7 @@ export class HeartCatchGame {
 
   gameOver() {
     this.running = false;
+    this.overSince = Date.now();
     cancelAnimationFrame(this.raf);
     if (this.score > this.best[this.side]) {
       this.best[this.side] = this.score;
@@ -540,7 +563,9 @@ export class HeartCatchGame {
 
     // A moment to read the result, then back to the question page with the points
     if (this.returnTimer) clearTimeout(this.returnTimer);
-    this.returnTimer = setTimeout(() => this.returnToIntro(s), 5000);
+    const shownAt = Date.now();
+    const back = () => { const left = 5000 - (Date.now() - shownAt); if (left > 30) { this.returnTimer = setTimeout(back, left); return; } this.returnToIntro(s); };
+    this.returnTimer = setTimeout(back, 5000);
   }
 
   /** Draws the bouquet the player built onto the result card, with the chosen face above it. */
@@ -551,7 +576,7 @@ export class HeartCatchGame {
     if (forEl) forEl.textContent = this.score > 0 ? `You made this bouquet for ${name}` : `An empty bouquet for ${name}… next time!`;
     if (avatar) {
       const img = avatar.querySelector('img');
-      if (img) img.src = this.side === 'bride' ? '/assets/images/people/couple-bride.png' : '/assets/images/people/couple-groom.png';
+      if (img) img.src = this.side === 'bride' ? '/assets/images/people/bride-face.png' : '/assets/images/people/groom-face.png';
     }
     if (!canvas) return;
     const ctx = canvas.getContext('2d');

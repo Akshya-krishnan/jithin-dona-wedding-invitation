@@ -8,6 +8,18 @@ import { IntroExperience } from './intro-experience.js';
 import { HeartCatchGame } from './heart-game.js';
 import { Finale } from './finale.js';
 
+// Phones resize the viewport as the browser bar slides in and out, which reflows and
+// stutters every page. Keep the layout at the height of the initial viewport, only
+// updating on a real orientation change.
+(() => {
+  const root = document.documentElement;
+  let lastW = 0;
+  const set = () => { root.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px'); lastW = window.innerWidth; };
+  set();
+  window.addEventListener('resize', () => { if (Math.abs(window.innerWidth - lastW) > 80) set(); });
+  window.addEventListener('orientationchange', () => setTimeout(set, 250));
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   if (window.__jdBooted) return;        // guard against the script running twice (e.g. dev hot reload)
   window.__jdBooted = true;

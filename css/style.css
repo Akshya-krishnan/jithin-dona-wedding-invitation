@@ -85,7 +85,7 @@ img {
 .wc-backdrop {
   position: absolute;
   inset: -6%;
-  background: url('../assets/images/intro-watercolor-church.jpg') center center / cover no-repeat;
+  background: url('/assets/images/intro-watercolor-church.jpg') center center / cover no-repeat;
   filter: blur(30px) saturate(0.85) brightness(1.04);
   opacity: 0;
   transform: scale(1.08);
@@ -791,7 +791,7 @@ img {
 .eng-backdrop {
   position: absolute;
   inset: -6%;
-  background: url('../assets/images/engagement-invite.jpg') center center / cover no-repeat;
+  background: url('/assets/images/engagement-invite.jpg') center center / cover no-repeat;
   filter: blur(28px) saturate(0.9) brightness(1.03);
   opacity: 0;
   transform: scale(1.08);
@@ -6509,7 +6509,7 @@ img {
 .envp-sides, .envp-face {
   position: absolute;
   inset: 0;
-  background: url('../assets/images/envelope-closed.jpg') center / 100% 100% no-repeat;
+  background: url('/assets/images/envelope-closed.jpg') center / 100% 100% no-repeat;
 }
 
 /* side flaps + everything not covered by the moving flaps */
@@ -6611,7 +6611,7 @@ img {
 .inside-art {
   position: absolute;
   inset: 0;
-  background: url('../assets/images/envelope-inside.jpg') center / cover no-repeat;
+  background: url('/assets/images/envelope-inside.jpg') center / cover no-repeat;
 }
 
 /* drifting window light and soft shadow over the paper */
@@ -7275,3 +7275,85 @@ button, .wc-tap-prompt, .fin-btn, .game-btn, .game-side, .mem-card, .lb-nav { to
   .inv-card.inside .inside-text { top: 6vh !important; left: 6% !important; right: 52% !important; }
   .inv-card.inside .inside-details { right: 6% !important; bottom: auto !important; top: 50% !important; transform: translateY(-50%); width: 42% !important; }
 }
+
+/* ==========================================================================
+   PERFORMANCE — pause what is not on screen, drop blur/blend work on phones,
+   faster envelope
+   ========================================================================== */
+/* nothing animates on pages that are hidden or on slides that are not current */
+.intro-hidden, .intro-hidden *,
+.stage-hidden, .stage-hidden *,
+.wd-slide:not(.active):not(.leaving), .wd-slide:not(.active):not(.leaving) * { animation-play-state: paused !important; }
+
+/* long sections inside the scrolling slide are skipped entirely while off screen */
+.wd-memories, .wd-game, .wd-video, .wd-final { content-visibility: auto; contain-intrinsic-size: auto 100vh; }
+
+/* moving layers get their own compositor layer */
+.wd-bg-wash, .sb-light, .sb-shadow, .inside-light, .inside-shade, .env-sheen, .vid-sun, .game-glow, .wc-art-img, .eng-art, .envp-flap, .bf-body-wrap { will-change: transform; }
+
+/* envelope: quicker flaps and lettering */
+.envp-flap { transition-duration: 1s !important; }
+.env-scene.opened .envp { transition-delay: 0s; transition-duration: 0.35s; }
+.env-scene.opened .inside-text > :nth-child(1) { animation-delay: 0.05s !important; animation-duration: 0.8s !important; }
+.env-scene.opened .inside-text > :nth-child(2) { animation-delay: 0.2s !important; animation-duration: 0.9s !important; }
+.env-scene.opened .inside-text > :nth-child(3) { animation-delay: 0.4s !important; animation-duration: 0.8s !important; }
+.env-scene.opened .inside-text > :nth-child(4) { animation-delay: 0.55s !important; animation-duration: 0.9s !important; }
+.env-scene.opened .inside-details { animation-delay: 0.9s !important; animation-duration: 0.9s !important; }
+.env-scene.opened .inv-hint { animation-delay: 1.4s !important; }
+
+/* phones and tablets: no animated blur, no blend modes, lighter backdrops */
+@media (max-width: 1024px), (pointer: coarse) {
+  .wc-art-img { filter: none !important; }
+  .playing .wc-art-img { animation-name: wcPaintInLite, wcKenBurns !important; }
+  .eng-art { filter: none !important; }
+  .playing .eng-art { animation-name: engArtSharpenLite !important; }
+  .wc-backdrop, .eng-backdrop, .wd-backdrop { filter: blur(10px); }
+  .wd-bg-wash { mix-blend-mode: normal; filter: none; opacity: 0.55 !important; }
+  .playing .wd-bg-wash-1, .playing .wd-bg-wash-2, .playing .wd-bg-wash-3 { animation-name: wdWashDriftA !important; animation-duration: 30s !important; }
+  .wd-bg-grain, .sb-grain, .bf-grain { opacity: 0.18; mix-blend-mode: normal; }
+  .inside-light, .inside-shade { mix-blend-mode: normal; }
+  .inside-shade { opacity: 0.45; }
+  .sb-light { mix-blend-mode: normal; opacity: 0.35; }
+  .sb-shadow { filter: blur(8px); mix-blend-mode: normal; opacity: 0.25; }
+  .lb-backdrop { filter: blur(12px) brightness(0.55); }
+  .env-fold { filter: blur(6px); mix-blend-mode: normal; opacity: 0.35; }
+  .game-glow { filter: none; }
+  .wd-halo, .wd-ring-wrap { will-change: auto; }
+  .wd-bokeh span:nth-child(n+7), .vid-heart:nth-child(n+8), .sb-specks i:nth-child(n+9), .game-float:nth-child(n+10), .inv-flower:nth-child(n+9) { display: none; }
+}
+
+@keyframes wcPaintInLite {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes engArtSharpenLite {
+  from { opacity: 0.6; }
+  to   { opacity: 1; }
+}
+
+/* ==========================================================================
+   STABILITY — fixed page height on phones, no restart flicker, untouchable result card
+   ========================================================================== */
+:root { --vh: 1vh; }
+
+/* the whole app and every full-screen page use the locked height */
+.page-stack, .watercolor-intro-stage, .verse-intro-stage, .engagement-stage, .wedding-stage, .wd-slide,
+.wd-slide-couple .wd-slide-inner.wd-couple-card, .inv-card.inside, .game-stage {
+  height: calc(var(--vh, 1vh) * 100) !important;
+}
+.page-stack, .watercolor-intro-stage, .verse-intro-stage, .engagement-stage, .wedding-stage, .wd-slide { top: 0; bottom: auto; }
+.wd-memories, .wd-game, .wd-video, .wd-final, .game-intro, .game-later, .game-pick { min-height: calc(var(--vh, 1vh) * 100); }
+@media (orientation: portrait) { .eng-frame { height: max(100%, calc(100vw / 0.5581)); } }
+
+/* the result card ignores every touch for its whole 5 seconds */
+.game-over { pointer-events: auto; }
+.game-over-card { pointer-events: none; }
+.game-stage .game-close { transition: opacity 0.2s ease; }
+.game-over:not([hidden]) ~ .game-top .game-close, .game-stage:has(.game-over:not([hidden])) .game-close { opacity: 0; pointer-events: none; }
+
+/* images never flash while their animation restarts */
+.wc-art-img, .eng-art, .inside-art { backface-visibility: hidden; }
+
+/* scrolling slide: no rubber-band bounce that reveals the page behind */
+.wd-slide-couple { overscroll-behavior-y: none; -webkit-overflow-scrolling: touch; }
